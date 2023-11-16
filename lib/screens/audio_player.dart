@@ -7,10 +7,10 @@ import 'package:rxdart/rxdart.dart';
 
 class PositionData {
   PositionData(
-    this.position,
-    this.bufferedPosition,
-    this.duration,
-  );
+      this.position,
+      this.bufferedPosition,
+      this.duration,
+      );
 
   final Duration position;
   final Duration bufferedPosition;
@@ -25,7 +25,7 @@ class MusicPlayerScreen extends StatefulWidget {
     required this.id,
     required this.title,
     required this.artist
-});
+  });
 
   final String songUrl;
   final String imageUrl;
@@ -39,27 +39,27 @@ class MusicPlayerScreen extends StatefulWidget {
 class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
   late AudioPlayer _audioPlayer;
 
-  final _playlist = ConcatenatingAudioSource(
+  late ConcatenatingAudioSource _playlist = ConcatenatingAudioSource(
     children: [
-      AudioSource.uri(Uri.parse('asset:///assets/audio/song_.mp3'),
+      AudioSource.uri(Uri.parse(widget.songUrl),
           tag: MediaItem(
-              id: '0',
-              title: 'Goodbye',
-              artist: 'Lekhak',
-              artUri: Uri.parse('https://i.ytimg.com/vi/vyJC0fJUkkE/maxresdefault.jpg'))),
-      AudioSource.uri(Uri.parse('asset:///assets/audio/song_LongTimeNoSee.mp3'),
-          tag: MediaItem(
-              id: '1',
-              title: 'Long Time No See',
-              artist: 'AUR',
-              artUri: Uri.parse('https://i.ytimg.com/vi/cOE_R8w7KTA/maxresdefault.jpg'))),
-      AudioSource.uri(Uri.parse('asset:///assets/audio/song_TuHaiKahan.mp3'),
-          tag: MediaItem(
-              id: '2',
-              title: 'Tu Hai Kahan',
-              artist: 'AUR',
-              artUri: Uri.parse('https://i.ytimg.com/vi/ad-hYYIWqZw/maxresdefault.jpg'),
-          )),
+              id: widget.id.toString(),
+              title: widget.title,
+              artist: widget.artist,
+              artUri: Uri.parse(widget.imageUrl))),
+      // AudioSource.uri(Uri.parse('asset:///assets/audio/song_LongTimeNoSee.mp3'),
+      //     tag: MediaItem(
+      //         id: '1',
+      //         title: 'Long Time No See',
+      //         artist: 'AUR',
+      //         artUri: Uri.parse('https://i.ytimg.com/vi/cOE_R8w7KTA/maxresdefault.jpg'))),
+      // AudioSource.uri(Uri.parse('asset:///assets/audio/song_TuHaiKahan.mp3'),
+      //     tag: MediaItem(
+      //       id: '2',
+      //       title: 'Tu Hai Kahan',
+      //       artist: 'AUR',
+      //       artUri: Uri.parse('https://i.ytimg.com/vi/ad-hYYIWqZw/maxresdefault.jpg'),
+      //     )),
     ],
   );
 
@@ -68,7 +68,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
         _audioPlayer.positionStream,
         _audioPlayer.bufferedPositionStream,
         _audioPlayer.durationStream,
-        (position, bufferedPosition, duration) => PositionData(
+            (position, bufferedPosition, duration) => PositionData(
           position,
           bufferedPosition,
           duration ?? Duration.zero,
@@ -97,7 +97,6 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    prin
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -144,9 +143,9 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
 class MediaMetaData extends StatelessWidget {
   const MediaMetaData(
       {super.key,
-      required this.imageUrl,
-      required this.title,
-      required this.artist});
+        required this.imageUrl,
+        required this.title,
+        required this.artist});
 
   final String imageUrl;
   final String title;

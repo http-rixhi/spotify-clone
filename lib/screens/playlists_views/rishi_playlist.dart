@@ -6,7 +6,7 @@ import 'package:spotify_clone/screens/audio_player.dart';
 class RishiPlaylist extends StatelessWidget {
   RishiPlaylist({super.key});
 
-  final List _songplaylist = [
+  List _songplaylist = [
     {
       'songUrl': 'asset:///assets/audio/song_goodbye.mp3',
       'imageUrl': 'https://i.ytimg.com/vi/ad-hYYIWqZw/maxresdefault.jpg',
@@ -59,15 +59,16 @@ class RishiPlaylist extends StatelessWidget {
               trailing:
                   IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
               onTap: () {
+                _songplaylist[index];
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => MusicPlayerScreen(
-                            songUrl: _songplaylist[0]['songUrl'],
-                            imageUrl: _songplaylist[0]['imageUrl'],
-                            id: 0,
-                            title: _songplaylist[0]['title'],
-                            artist: _songplaylist[0]['artist'])));
+                            songUrl: _songplaylist[index]['songUrl'],
+                            imageUrl: _songplaylist[index]['imageUrl'],
+                            id: index,
+                            title: _songplaylist[index]['title'],
+                            artist: _songplaylist[index]['artist'])));
               },
             ),
           )),

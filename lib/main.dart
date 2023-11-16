@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:spotify_clone/screens/homepage.dart';
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Montserrat',
         brightness: Brightness.dark,
+        scaffoldBackgroundColor: Color.fromRGBO(18, 18, 18, 1),
       ),
       home: const BottomNavBar(),
     );

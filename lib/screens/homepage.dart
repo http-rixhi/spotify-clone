@@ -12,7 +12,6 @@ class HomeScreens extends StatefulWidget {
 }
 
 class _HomeScreensState extends State<HomeScreens> with TickerProviderStateMixin {
-  late final TabController _tabController;
   bool _allTabIsVisible = true;
   bool _musicTabIsVisible = false;
   bool _podcastsTabIsVisible = false;
@@ -35,9 +34,9 @@ class _HomeScreensState extends State<HomeScreens> with TickerProviderStateMixin
       theme: ThemeData(
         fontFamily: 'Montserrat',
         brightness: Brightness.dark,
+        scaffoldBackgroundColor: Color.fromRGBO(18, 18, 18, 1),
       ),
       home: Scaffold(
-        backgroundColor: Color.fromRGBO(18, 18, 18, 1),
         body: SafeArea(
           child: Column(
             children: [
